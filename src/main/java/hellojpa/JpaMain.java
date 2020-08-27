@@ -32,6 +32,15 @@ public class JpaMain {
                 System.out.println("member.name = " + member.getName());
             }
 
+            // 비영속
+            Member member = new Member();
+            member.setId(100L);
+            member.setName("HelloJPA");
+
+            // 영속
+            entityManager.persist(member);
+
+            // 영속 된다고 DB에 저장 되는게 아님, 커밋을 해야 저장됨
             entityTransaction.commit();
         } catch (Exception e) {
             entityTransaction.commit();
