@@ -17,7 +17,13 @@
             <property name="hibernate.use_sql_comments" value="true"/>
             <!--아래 기능은 모았다가 한 방에 db에 쿼리를 보내는 버퍼링 기술-->
             <property name="hibernate.jdbc.batch_size" value="10"/>
-            <!--<property name="hibernate.hbm2ddl.auto" value="create" />-->
+            <!--아래 기능은 데이터베이스 스키마 자동 생성 - 속성 (주로 테스트 코드 쓸 때 사용)-->
+            <!--value 값에 "create", "create-drop", "update", "validate", "none"-->
+            <!-- 운영 장비에는 절대 create, create-drop, update 사용하면 안된다.-->
+            <!-- 개발 초기 단계(혼자 할 때)에는 create, update 를 사용하면 됨-->
+            <!-- 테스트 서버(여러명 중간 단계)부터는 update 또는 validate를 사용-->
+            <!-- 스테이징과 운영 서버는 validate 또는 none-->
+            <property name="hibernate.hbm2ddl.auto" value="none" />
         </properties>
     </persistence-unit>
 </persistence>
