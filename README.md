@@ -23,3 +23,8 @@
     - entityManager.detach(entity);
     - entityManager.clear();  // 테스트 코드 작성 시 눈으로 확인할 때 용이하게 사용함
     - entityManager.close();
+- DDL 생성 기능
+    - 제약조건 추가 : 회원 이름은 필수, 10자 초과 X
+        - @Column(nullable = false, length = 10)
+    - DDL 생성 기능은 DDL 을 자동 생성 할 때만 사용되고 JPA의 실행 로직에는 영향을 주지 않는다.
+        - 이와 다르게 @Table(name = "MBR") 과 같은 테이블 명을 바꾸는 것은 런타임에 영향을 줌
