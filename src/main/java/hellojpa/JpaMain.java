@@ -19,7 +19,7 @@ public class JpaMain {
         entityTransaction.begin();
 
         try {
-//            Member findMember = entityManager.find(Member.class, 1L);
+/*//            Member findMember = entityManager.find(Member.class, 1L);
 //            findMember.setName("HelloJPA");
 
             //전체 데이터를 조회하고 싶을 때, JPQL(엔티티 객체를 대상으로 하는 객체 지향 쿼리 언어로 보면 됨) 사용
@@ -48,6 +48,13 @@ public class JpaMain {
             System.out.println("==== 영속성 컨텍스트 전에 쿼리가 나가는지 확인하는 선 ====");
 
             // 영속 된다고 DB에 저장 되는게 아님, 커밋을 해야 저장됨
+            entityTransaction.commit();*/
+
+            Member member = new Member();
+            member.setUsername("C");
+
+            entityManager.persist(member);
+
             entityTransaction.commit();
         } catch (Exception e) {
             entityTransaction.commit();

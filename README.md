@@ -28,3 +28,12 @@
         - @Column(nullable = false, length = 10)
     - DDL 생성 기능은 DDL 을 자동 생성 할 때만 사용되고 JPA의 실행 로직에는 영향을 주지 않는다.
         - 이와 다르게 @Table(name = "MBR") 과 같은 테이블 명을 바꾸는 것은 런타임에 영향을 줌
+- 기본키 매핑 방법
+    - 직접 할당 : @Id만 사용
+    - 자동 생성(@GeneratedValue)
+        - IDENTITY: 데이터베이스에 위임, MYSQL
+        - SEQUENCE: 데이터베이스 시퀀스 오브젝트 사용, ORACLE
+            - @SequenceGenerator 필요
+        - TABLE: 키 생성용 테이블 사용, 모든 DB에서 사용
+            - @TableGenerator 필요
+        - AUTO: 방언에 따라 자동 지정, 기본값
