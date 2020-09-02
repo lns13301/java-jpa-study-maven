@@ -23,7 +23,7 @@
             <!-- 개발 초기 단계(혼자 할 때)에는 create, update 를 사용하면 됨-->
             <!-- 테스트 서버(여러명 중간 단계)부터는 update 또는 validate를 사용-->
             <!-- 스테이징과 운영 서버는 validate 또는 none-->
-            <property name="hibernate.hbm2ddl.auto" value="none" />
+            <property name="hibernate.hbm2ddl.auto" value="create" />
         </properties>
     </persistence-unit>
 </persistence>

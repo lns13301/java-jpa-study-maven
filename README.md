@@ -37,3 +37,16 @@
         - TABLE: 키 생성용 테이블 사용, 모든 DB에서 사용
             - @TableGenerator 필요
         - AUTO: 방언에 따라 자동 지정, 기본값
+
+## 내용 정리
+
+- 권장하는 식별자 전략
+    - 기본 키 제약 조건: null 아님, 유일, 변하면 안됨
+    - 미래까지 이 조건을 만족하는 자연키는 찾기 어렵다. 대리키(대체키)를 사용하자.
+    - 예를 들어 주민등록번호도 기본 키로 적절하지 않다.
+    - 권장: Long형 + 대체키(예: Auto Increment, Sequence Object, UUID, 랜덤 값 조합) + 키 생성 전략 사용
+- Identity 전략
+    - 기본 키 생성을 데이터베이스에 위임
+    - Identity 일 때만 특이하게 insert 쿼리를 entityManager.persist() 할 때 날린다.
+        - PK 값이 필요한데 Identity 는 DB에 쿼리가 보내지고 나서 PK 가 생성되기 때문에 예외로 처리한다.
+    - 모아서 Insert 하는게 Identity 전략의 단점 이다.
