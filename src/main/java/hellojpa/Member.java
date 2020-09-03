@@ -4,7 +4,9 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@SequenceGenerator(name = "member_seq_generator", sequenceName = "member_seq")
+@SequenceGenerator(name = "member_seq_generator",
+        sequenceName = "member_seq", // 매핑할 데이터베이스 시퀀스 이름
+        initialValue = 1, allocationSize = 1)
 public class Member {
 
     @Id

@@ -50,3 +50,8 @@
     - Identity 일 때만 특이하게 insert 쿼리를 entityManager.persist() 할 때 날린다.
         - PK 값이 필요한데 Identity 는 DB에 쿼리가 보내지고 나서 PK 가 생성되기 때문에 예외로 처리한다.
     - 모아서 Insert 하는게 Identity 전략의 단점 이다.
+- Sequence 전략
+    - allocationSize 기본 값 50, 시퀀스 한 번 호출에 증가하는 수(성능 최적화에 사용됨)
+    - nextCall 한 번할 때, DB에 50개를 미리 호출해서 세팅해두고 메모리에서 1씩 사용, 50개를 다 쓰고나서 호출하면 다시 50개를 미리 호출
+    - 여러 웹 서버가 있어도 동시성 이슈없이 다양한 문제를 해결 가능함
+    
