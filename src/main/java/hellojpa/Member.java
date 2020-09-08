@@ -4,12 +4,12 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@SequenceGenerator(name = "member_seq_generator",
+/*@SequenceGenerator(name = "member_seq_generator",
         sequenceName = "member_seq", // 매핑할 데이터베이스 시퀀스 이름
-        initialValue = 1, allocationSize = 1)
+        initialValue = 1, allocationSize = 1)*/
 public class Member {
 
-    @Id
+/*    @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "member_seq_generator")
     private Long id;
 
@@ -34,7 +34,7 @@ public class Member {
 
     public void setUsername(String username) {
         this.username = username;
-    }
+    }*/
 /*    private Integer age;
 
     @Enumerated(EnumType.STRING)
@@ -52,4 +52,37 @@ public class Member {
 
     @Lob
     private String description;*/
+
+    @Id @GeneratedValue
+    private Long id;
+
+    @Column(name = "USERNAME")
+    private String username;
+
+    @Column(name = "TEAM_ID")
+    private Long teamId;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public Long getTeamId() {
+        return teamId;
+    }
+
+    public void setTeamId(Long teamId) {
+        this.teamId = teamId;
+    }
 }

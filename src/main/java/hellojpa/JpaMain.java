@@ -50,14 +50,25 @@ public class JpaMain {
             // 영속 된다고 DB에 저장 되는게 아님, 커밋을 해야 저장됨
             entityTransaction.commit();*/
 
-            Member member = new Member();
+/*            Member member = new Member();
             member.setUsername("C");
 
             entityManager.persist(member);
 
+            entityTransaction.commit();*/
+
+            Team team = new Team();
+            team.setName("TeamA");
+            entityManager.persist(team);
+
+            Member member = new Member();
+            member.setUsername("member1");
+            member.setTeamId(team.getId());
+            entityManager.persist(member);
+
             entityTransaction.commit();
         } catch (Exception e) {
-            entityTransaction.commit();
+            entityTransaction.rollback();
         } finally {
             entityManager.close();
         }
