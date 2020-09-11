@@ -63,8 +63,13 @@ public class JpaMain {
 
             Member member = new Member();
             member.setUsername("member1");
-            member.setTeamId(team.getId());
+            member.setTeam(team);
             entityManager.persist(member);
+
+            Member findMember = entityManager.find(Member.class, member.getId());
+
+            Team findTeam = findMember.getTeam();
+            System.out.println("findTeam = " + findTeam.getName());
 
             entityTransaction.commit();
         } catch (Exception e) {
