@@ -53,17 +53,26 @@ public class Member {
     @Lob
     private String description;*/
 
+//    @Column(name = "TEAM_ID")
+//    private Long teamId;
+
+/*    @ManyToOne
+    @JoinColumn(name = "TEAM_ID")
+    private Team team;*/
+
+/*    public void setTeam(Team team) {
+        this.team = team;
+    }*/
+
     @Id @GeneratedValue
+    @Column(name = "MEMBER_ID")
     private Long id;
 
     @Column(name = "USERNAME")
     private String username;
 
-//    @Column(name = "TEAM_ID")
-//    private Long teamId;
-
     @ManyToOne
-    @JoinColumn(name = "TEAM_ID")
+    @JoinColumn(name = "TEAM_ID", insertable = false, updatable = false) // 해당 옵션을 주면 읽기 전용이 된다.
     private Team team;
 
     public Long getId() {
@@ -82,11 +91,15 @@ public class Member {
         this.username = username;
     }
 
-    public Team getTeam() {
+/*    public Team getTeam() {
         return team;
     }
 
-    public void setTeam(Team team) {
+    // 자바의 Getter, Setter 관례 때문에 set 을 쓰기보다는 이름을 다르게하여 중요해보이게 하자
+    // 연관관계 편의 메소드는 두 객체에 다 있으면 오류날 수 있으니 한 쪽에만 만들어서 쓰자
+    public void changeTeam(Team team) {
         this.team = team;
-    }
+        // 양방향 세팅 (연관관계 편의 메소드)
+        team.getMembers().add(this);
+    }*/
 }

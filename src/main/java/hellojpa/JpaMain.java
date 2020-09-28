@@ -57,14 +57,16 @@ public class JpaMain {
 
             entityTransaction.commit();*/
 
-            Team team = new Team();
+/*            Team team = new Team();
             team.setName("TeamA");
             entityManager.persist(team);
 
             Member member = new Member();
             member.setUsername("member1");
-            member.setTeam(team);
+            //member.changeTeam(team);
             entityManager.persist(member);
+
+            team.addMember(member);
 
             entityManager.flush();
             entityManager.clear();
@@ -74,7 +76,18 @@ public class JpaMain {
 
             for (Member m : members) {
                 System.out.println("m = " + m.getUsername());
-            }
+            }*/
+
+            Member member = new Member();
+            member.setUsername("member1");
+
+            entityManager.persist(member);
+
+            Team team = new Team();
+            team.setName("teamA");
+            team.getMembers().add(member);
+
+            entityManager.persist(team);
 
             entityTransaction.commit();
         } catch (Exception e) {
